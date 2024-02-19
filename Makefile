@@ -2,22 +2,22 @@
 all: freshvolumes volumes build up
 
 build:
-	docker-compose -f ./docker-compose.yml build
+	docker-compose -f ./srcs/docker-compose.yml build
 
 up:
-	docker-compose -f ./docker-compose.yml up -d
+	docker-compose -f ./srcs/docker-compose.yml up -d
 
 down:
-	docker-compose -f ./docker-compose.yml down -v
+	docker-compose -f ./srcs/docker-compose.yml down -v
 
 start:
-	docker-compose -f ./docker-compose.yml start
+	docker-compose -f ./srcs/docker-compose.yml start
 
 stop:
-	docker-compose -f ./docker-compose.yml stop
+	docker-compose -f ./srcs/docker-compose.yml stop
 
 logs:
-	docker-compose -f ./docker-compose.yml logs
+	docker-compose -f ./srcs/docker-compose.yml logs
 
 clean: stop down cleanvolumes
 	@read -p "Are you sure you want to remove all images? (y/N): " confirm; \
