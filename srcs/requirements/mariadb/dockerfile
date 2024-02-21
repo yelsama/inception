@@ -10,7 +10,7 @@ RUN touch /run/openrc/softlevel
 
 
 # Copy installing script and make it executable
-ADD ./run.sh .
+ADD ./tools/run.sh .
 RUN chmod +x /run.sh
 EXPOSE 3306
 

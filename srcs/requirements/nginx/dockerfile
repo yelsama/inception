@@ -12,7 +12,7 @@ RUN chown -R nginx:nginx /var/lib/nginx
 RUN chown -R nginx:nginx /var/www/html
 
 # COPY Files to container
-COPY ./nginx.conf /etc/nginx/
+COPY ./conf/nginx.conf /etc/nginx/
 
 # start openrc
 RUN openrc
@@ -22,7 +22,7 @@ RUN touch /run/openrc/softlevel
 RUN mkdir -p /run/nginx
 
 # Copy installing script and make it executable
-COPY ./run.sh /
+COPY ./tools/run.sh /
 RUN chmod +x ./run.sh
 
 ENTRYPOINT [ "./run.sh" ]

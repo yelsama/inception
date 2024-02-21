@@ -25,8 +25,8 @@ RUN openrc
 RUN touch /run/openrc/softlevel
 
 # Copy installing script and make it executable
-COPY ./run.sh /
-COPY ./www.conf /etc/php81/php-fpm.d
+COPY ./tools/run.sh /
+COPY ./conf/www.conf /etc/php81/php-fpm.d
 RUN chmod +x ./run.sh
 EXPOSE 9000
 
