@@ -1,0 +1,14 @@
+FROM alpine:3.18
+
+# Update System and Install Tools
+RUN apk update
+RUN apk add --update nodejs npm
+
+ADD ./tools/index.html .
+
+ADD ./tools/servesite.js .
+
+
+EXPOSE 7777
+
+CMD node servesite

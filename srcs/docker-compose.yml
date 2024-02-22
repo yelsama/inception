@@ -43,6 +43,18 @@ services:
     env_file:
       - .env
 
+  website:
+    container_name: website
+    build: requirements/bonus/website/
+    image: website
+    networks:
+      - wpsite
+    ports:
+      - "7777:7777"
+    restart: always
+    env_file:
+      - .env
+
 networks:
   wpsite:
     driver: bridge
