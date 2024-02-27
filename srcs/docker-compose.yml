@@ -63,10 +63,10 @@ volumes:
   db-data:
     driver_opts:
       type: none
-      device: ${HOME}/data/db-data
+      device: /home/ymohamed/data/db-data
       o: bind
   www-data:
     driver_opts:
       type: none
-      device: ${HOME}/data/www-data
+      device: /home/ymohamed/data/www-data
       o: bind

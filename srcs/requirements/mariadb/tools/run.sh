@@ -13,13 +13,18 @@ then
     fi  
 
 
-    # Create database for wordpress
+    # Create local user and database for wordpress
+	mysql -u ${MYSQL_ROOT_USER} -e "CREATE USER '${DATABASE_USER}'@'localhost' IDENTIFIED BY '${DATABASE_PASS}';"
+	mysql -u ${MYSQL_ROOT_USER} -e "GRANT ALL PRIVILEGES ON *.* TO '${DATABASE_USER}'@'localhost' WITH GRANT OPTION;"
+	mysql -u ${MYSQL_ROOT_USER} -e "FLUSH PRIVILEGES;"
     mysql -u ${MYSQL_ROOT_USER} -e "CREATE DATABASE ${DATABASE_NAME} DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
 
-	# Create new user and Make The user GRANT ALL PRIVILEGES on Wordpress database
+	# Create new remote user and Make The user GRANT ALL PRIVILEGES on Wordpress database
 	mysql -u ${MYSQL_ROOT_USER} -e "CREATE USER '${DATABASE_USER}'@'%' IDENTIFIED BY '${DATABASE_PASS}';"
 	mysql -u ${MYSQL_ROOT_USER} -e "GRANT ALL PRIVILEGES ON ${DATABASE_NAME}.* TO '${DATABASE_USER}'@'%' IDENTIFIED BY '${DATABASE_PASS}';"
 	mysql -u ${MYSQL_ROOT_USER} -e "FLUSH PRIVILEGES;"
+
+	mysql -u ${MYSQL_ROOT_USER} -e "ALTER USER '${MYSQL_ROOT_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASS}';"
 
 fi
 

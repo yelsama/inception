@@ -1,5 +1,5 @@
 
-all: freshvolumes volumes build up
+all: volumes build up
 
 build:
 	docker-compose -f ./srcs/docker-compose.yml build
@@ -45,17 +45,17 @@ cleanvolumes:
 	@read -p "Are you sure you want to remove all current directoires of volumes? (y/N): " confirm; \
 	if [ "$$confirm" = "y" ]; then \
 		echo "Removing all volumes"; \
-		rm -rf $(HOME)/data/db-data; \
-		rm -rf $(HOME)/data/www-data; \
+		rm -rf /home/ymohamed/data/db-data; \
+		rm -rf /home/ymohamed/data/www-data; \
 		echo "Volumes removed."; \
 	else \
 		echo "Operation canceled."; \
 	fi
 
 freshvolumes:
-	rm -rf $(HOME)/data/db-data
-	rm -rf $(HOME)/data/www-data
+	rm -rf /home/ymohamed/data/db-data/*
+	rm -rf /home/ymohamed/data/www-data/*
 
 volumes:
-	mkdir -p $(HOME)/data/db-data
-	mkdir -p $(HOME)/data/www-data
+	mkdir -p /home/ymohamed/data/db-data
+	mkdir -p /home/ymohamed/data/www-data
